@@ -16,12 +16,12 @@ const OS_OPTIONS = [
 const PLANS = [
     {
         id: 'starter',
-        name: 'Starter (t3.medium)',
+        name: 'Starter (t3.micro)',
         cpu: '2 vCPU',
-        ram: '4GB DDR4',
-        basePrice: 1200,
-        type: 't3.medium',
-        features: ['10GBps Network', 'EBS Optimized', 'Elastic IP Included']
+        ram: '1GB DDR4',
+        basePrice: 600,
+        type: 't3.micro',
+        features: ['Up to 5GBps Network', 'EBS Optimized', 'Free Tier Eligible']
     },
     {
         id: 'cloud',
