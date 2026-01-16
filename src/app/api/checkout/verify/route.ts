@@ -3,16 +3,16 @@ import crypto from 'crypto';
 import { createClient } from '@/lib/supabase-server';
 import { EC2Client, RunInstancesCommand } from "@aws-sdk/client-ec2";
 
-const ec2Client = new EC2Client({
-    region: process.env.AXT_AWS_REGION,
-    credentials: {
-        accessKeyId: process.env.AXT_AWS_ACCESS_KEY_ID!,
-        secretAccessKey: process.env.AXT_AWS_SECRET_ACCESS_KEY!,
-    }
-});
-
 export async function POST(req: Request) {
     try {
+        const ec2Client = new EC2Client({
+            region: process.env.AXT_AWS_REGION,
+            credentials: {
+                accessKeyId: process.env.AXT_AWS_ACCESS_KEY_ID!,
+                secretAccessKey: process.env.AXT_AWS_SECRET_ACCESS_KEY!,
+            }
+        });
+
         const { razorpay_order_id, razorpay_payment_id, razorpay_signature, config } = await req.json();
         const supabase = await createClient();
 
