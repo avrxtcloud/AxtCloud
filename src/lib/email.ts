@@ -1,9 +1,19 @@
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const getResendClient = () => {
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) {
+        // Return a dummy client during build to prevent crash
+        return new Resend('re_dummy_123');
+    }
+    return new Resend(apiKey);
+};
 
 export async function sendWelcomeEmail(email: string, name: string) {
     try {
+        const resend = getResendClient();
+        if (!process.env.RESEND_API_KEY) return;
+
         await resend.emails.send({
             from: 'AXTCloud <hello@co.goaxt.cloud>',
             to: email,
@@ -33,6 +43,9 @@ export async function sendWelcomeEmail(email: string, name: string) {
 
 export async function sendProvisioningEmail(email: string, instanceName: string, specs: any) {
     try {
+        const resend = getResendClient();
+        if (!process.env.RESEND_API_KEY) return;
+
         await resend.emails.send({
             from: 'AXTCloud <notifications@co.goaxt.cloud>',
             to: email,
@@ -59,6 +72,9 @@ export async function sendProvisioningEmail(email: string, instanceName: string,
 
 export async function sendActionEmail(email: string, instanceName: string, action: string) {
     try {
+        const resend = getResendClient();
+        if (!process.env.RESEND_API_KEY) return;
+
         await resend.emails.send({
             from: 'AXTCloud <notifications@co.goaxt.cloud>',
             to: email,
