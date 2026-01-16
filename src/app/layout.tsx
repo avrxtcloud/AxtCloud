@@ -8,8 +8,6 @@ import Script from "next/script";
 export const metadata: Metadata = {
   title: "AXTCloud | Premium Cloud Hosting Partner",
   description: "AXTCloud - Premium VPS, Dedicated Servers, and Enterprise Cloud Hosting with advanced DDoS protection and white-glove support.",
-  themeColor: "#050505",
-  viewport: "width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover",
   icons: {
     icon: "https://cdn.axt.co.in/logo.jpg",
     shortcut: "https://cdn.axt.co.in/logo.jpg",
@@ -19,6 +17,14 @@ export const metadata: Metadata = {
     title: "AXTCloud - Premium Hosting",
     images: ["https://cdn.axt.co.in/logo.jpg"],
   }
+};
+
+export const viewport = {
+  themeColor: "#050505",
+  width: "device-width",
+  initialScale: 1.0,
+  maximumScale: 5.0,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({

@@ -37,6 +37,8 @@ const PLANS = [
 const STORAGE_PRICE_PER_GB = 10; // ₹10 per GB
 const BACKUP_FEE = 250;
 
+export const dynamic = 'force-dynamic';
+
 export default function DeployPage() {
     const [selectedOS, setSelectedOS] = useState(OS_OPTIONS[0]);
     const [selectedPlan, setSelectedPlan] = useState(PLANS[0]);
