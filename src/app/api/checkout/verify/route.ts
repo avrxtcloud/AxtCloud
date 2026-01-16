@@ -53,7 +53,7 @@ export async function POST(req: Request) {
             TagSpecifications: [
                 {
                     ResourceType: "instance",
-                    Tags: [{ Key: "Name", Value: config.name || "AXT-User-Server" }],
+                    Tags: [{ Key: "Name", Value: config.name || "AXT-Server" }],
                 },
             ],
         });
@@ -109,7 +109,7 @@ export async function POST(req: Request) {
         }
 
         // 6. Success!
-        return NextResponse.json({ message: "Verification successful", instanceId: instance.InstanceId });
+        return NextResponse.json({ message: "Provisioning started successfully", instanceId: instance.InstanceId });
     } catch (error: any) {
         console.error('GLOBAL VERIFY ERROR:', error);
         return NextResponse.json({ error: error.message || 'Internal Server Error' }, { status: 500 });

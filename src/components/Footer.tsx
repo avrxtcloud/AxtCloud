@@ -18,7 +18,7 @@ export default function Footer() {
             <ComingSoonModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
 
             <div className="trustpilot-widget" data-locale="en-US" data-template-id="56278e9abfbbba0bdcd568bc" data-businessunit-id="69206b7a2a6043b23f4dfbb5" data-style-height="52px" data-style-width="100%" data-token="18287e79-0319-4355-92cc-3b2b74f9821f">
-                <a href="https://www.trustpilot.com/review/axt.co.in" target="_blank" rel="noopener">Trustpilot</a>
+                <a href="https://www.trustpilot.com/review/goaxt.cloud" target="_blank" rel="noopener">Trustpilot</a>
             </div>
             <div style={{ marginBottom: '40px' }}></div>
 

@@ -10,7 +10,7 @@ export default function ComingSoonModal({ isOpen, onClose }: { isOpen: boolean, 
             <div className="modal-content reveal active" onClick={e => e.stopPropagation()}>
                 <i className="fa-solid fa-rocket" style={{ fontSize: '3rem', color: 'var(--primary-red)', marginBottom: '20px' }}></i>
                 <h2>Coming <span>Soon</span></h2>
-                <p>We're currently upgrading this service to high-performance AWS infrastructure. This feature will be available shortly.</p>
+                <p>We're currently upgrading this service to high-performance enterprise infrastructure. This feature will be available shortly.</p>
                 <button className="cta-btn" onClick={onClose} style={{ marginTop: '20px', width: '100%' }}>Got it</button>
             </div>
             <style jsx>{`

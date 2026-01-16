@@ -29,9 +29,8 @@ export default function Header() {
     }, []);
 
     const navLinks = [
-        { href: '/vps-hosting', label: 'VPS' },
-        { href: '/dedicated-servers', label: 'Dedicated' },
-        { href: '/minecraft-hosting', label: 'Minecraft' },
+        { href: '/panel', label: 'Panel' },
+        { href: '/deploy', label: 'Deploy' },
         { href: '/about', label: 'About' },
         { href: '/contact', label: 'Contact' },
     ];
@@ -101,7 +100,7 @@ export default function Header() {
                     }}>
                         Sign Up
                     </Link>
-                    <a href="mailto:sales@mail.axt.co.in" className="cta-btn" style={{
+                    <a href="mailto:sales@goaxt.cloud" className="cta-btn" style={{
                         background: 'var(--primary-red)', padding: '10px 24px', borderRadius: '8px',
                         fontWeight: 600, color: 'white', boxShadow: '0 4px 15px rgba(255, 0, 0, 0.3)',
                         display: 'inline-block', border: 'none', cursor: 'pointer'

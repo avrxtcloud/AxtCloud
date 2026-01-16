@@ -79,9 +79,9 @@ export default function About() {
                 <h2 className="section-title" style={{ fontSize: '2rem', marginBottom: '40px' }}>Corporate <span>Locations</span></h2>
 
                 {[
-                    { title: "Headquarters (Bengaluru)", name: "AXT TECHNOLOGYS PVT LTD", address: "Unit 14B, World Trade Center, BRIGADE GATEWAY, Dr Rajkumar Rd, Campus Malleshwaram, Bengaluru, Karnataka 560055", map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.892694770289!2d77.56708787595604!3d12.983995814041123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae163c46e29789%3A0xf6938a9f390074d!2sBrigade%20Gateway!5e0!3m2!1sen!2sin!4v1701389734135!5m2!1sen!2sin" },
-                    { title: "Branch Office (Chennai)", name: "AXT TECHNOLOGYS PVT LTD", address: "Futura Tech Park, Tower B 5th Floor, Suite #502 127, Rajiv Gandhi Salai (OMR) Chennai, Tamilnadu 600119", map: "https://maps.google.com/maps?width=600&height=400&hl=en&q=Futura Tech Park Chennai &t=&z=14&ie=UTF8&iwloc=B&output=embed" },
-                    { title: "Cloud Core Facility (Kannur)", name: "AXT TECHNOLOGYS PVT LTD - AxtCloud Data Center (KNR)", address: "Unit 3, Kannur Industrial Park, Kannur Cloud Core Facility (KCF, Mattanur - Irikkur Rd, near Kannur International Airport CNN, Valiyavelicham, Kannur, Kerala 670702", map: "https://maps.google.com/maps?width=100%25&height=600&hl=en&q=Unit%203,%20AXT%20TECHNOLOGYS%20PVT%20LTD%20-%20AxtCloud%20Data%20Center%20(KNR),%20Kannur%20Industrial%20Park,%20Kannur%20Cloud%20Core%20Facility%20(KCF,%20Mattanur%20-%20Irikkur%20Rd,%20near%20Kannur%20International%20Airport%20CNN,%20Valiyavelicham,%20Kannur,%20Kerala%20670702+(Unit%203,%20AXT%20TECHNOLOGYS%20PVT%20LTD%20-%20AxtCloud%20Data%20Center%20(KNR))&t=&z=14&ie=UTF8&iwloc=B&output=embed" },
+                    { title: "Headquarters (Bengaluru)", name: "AXTCloud", address: "Unit 14B, World Trade Center, BRIGADE GATEWAY, Dr Rajkumar Rd, Campus Malleshwaram, Bengaluru, Karnataka 560055", map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.892694770289!2d77.56708787595604!3d12.983995814041123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae163c46e29789%3A0xf6938a9f390074d!2sBrigade%20Gateway!5e0!3m2!1sen!2sin!4v1701389734135!5m2!1sen!2sin" },
+                    { title: "Branch Office (Chennai)", name: "AXTCloud", address: "Futura Tech Park, Tower B 5th Floor, Suite #502 127, Rajiv Gandhi Salai (OMR) Chennai, Tamilnadu 600119", map: "https://maps.google.com/maps?width=600&height=400&hl=en&q=Futura Tech Park Chennai &t=&z=14&ie=UTF8&iwloc=B&output=embed" },
+                    { title: "Cloud Core Facility (Kannur)", name: "AXTCloud - AxtCloud Data Center (KNR)", address: "Unit 3, Kannur Industrial Park, Kannur Cloud Core Facility (KCF, Mattanur - Irikkur Rd, near Kannur International Airport CNN, Valiyavelicham, Kannur, Kerala 670702", map: "https://maps.google.com/maps?width=100%25&height=600&hl=en&q=Unit%203,%20AXT%20TECHNOLOGYS%20PVT%20LTD%20-%20AxtCloud%20Data%20Center%20(KNR),%20Kannur%20Industrial%20Park,%20Kannur%20Cloud%20Core%20Facility%20(KCF,%20Mattanur%20-%20Irikkur%20Rd,%20near%20Kannur%20International%20Airport%20CNN,%20Valiyavelicham,%20Kannur,%20Kerala%20670702+(Unit%203,%20AXT%20TECHNOLOGYS%20PVT%20LTD%20-%20AxtCloud%20Data%20Center%20(KNR))&t=&z=14&ie=UTF8&iwloc=B&output=embed" },
                 ].map((hq, i) => (
                     <div key={i} className="location-group reveal" style={{ marginBottom: '60px', paddingBottom: '30px', borderBottom: i === 2 ? 'none' : '1px solid #1a1a1a' }}>
                         <address style={{ color: '#aaa', marginTop: '20px', fontStyle: 'normal', lineHeight: 1.8 }}>
@@ -98,11 +98,11 @@ export default function About() {
 
                 <div className="contact-grid" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '40px 20px', marginTop: '40px', paddingTop: '30px', borderTop: '1px dashed #222' }}>
                     {[
-                        { label: "Sales Inquiries", val: "sales@axt.co.in" },
-                        { label: "Technical Support", val: "help@axt.co.in", highlight: true },
-                        { label: "Bengaluru Office", val: "blr@axt.co.in" },
-                        { label: "Chennai Office", val: "maa@axt.co.in" },
-                        { label: "Kannur Data Center", val: "can@axt.co.in" },
+                        { label: "Sales Inquiries", val: "sales@goaxt.cloud" },
+                        { label: "Technical Support", val: "help@goaxt.cloud", highlight: true },
+                        { label: "Bengaluru Office", val: "blr@goaxt.cloud" },
+                        { label: "Chennai Office", val: "maa@goaxt.cloud" },
+                        { label: "Kannur Data Center", val: "can@goaxt.cloud" },
                     ].map((item, i) => (
                         <div key={i} className="contact-item" style={{ minWidth: '250px' }}>
                             <span style={{ display: 'block', fontSize: '0.85rem', color: '#666', marginBottom: '5px', textTransform: 'uppercase', letterSpacing: '1px' }}>{item.label}</span>

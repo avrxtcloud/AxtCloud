@@ -35,11 +35,10 @@ export default function Contact() {
                     <div className="icon-box"><i className="fa-solid fa-location-dot"></i></div>
                     <h3>Corporate Office</h3>
                     <div className="contact-info">
-                        <strong>AXT TECHNOLOGYS</strong><br />
-                        Unit 14B, World Trade Center<br />
-                        Brigade Gateway Campus<br />
-                        Dr. Rajkumar Road, Malleshwaram<br />
-                        Bengaluru, Karnataka – 560055
+                        <strong>AXTCloud - GOAXT.CLOUD</strong><br />
+                        Premium Cloud Infrastructure<br />
+                        Global Operations Center<br />
+                        Sales: sales@goaxt.cloud
                     </div>
                 </div>
 
@@ -48,7 +47,7 @@ export default function Contact() {
                     <h3>Status</h3>
                     <div className="hours-list">
                         <div>Portal Migration <span>In Progress</span></div>
-                        <div>AWS Cluster <span>Operational</span></div>
+                        <div>Cloud Cluster <span>Operational</span></div>
                         <div>Direct Support <span>Coming Soon</span></div>
                         <br />
                         <div style={{ border: 'none', justifyContent: 'center', color: 'var(--primary-red)', fontSize: '0.8rem', display: 'flex', alignItems: 'center' }}>

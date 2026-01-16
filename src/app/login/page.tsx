@@ -37,7 +37,7 @@ export default function LoginPage() {
             setError(loginError.message);
             setLoading(false);
         } else {
-            router.push('/dashboard');
+            router.push('/panel');
             router.refresh();
         }
     };
@@ -46,7 +46,7 @@ export default function LoginPage() {
         <div className="auth-container">
             <div className="auth-card reveal active">
                 <div className="auth-header">
-                    <img src="https://cdn.axt.co.in/logo.jpg" alt="AXT Logo" />
+                    <img src="https://cdn.goaxt.cloud/logo.jpg" alt="AXT Logo" />
                     <h1>Welcome <span>Back</span></h1>
                     <p>Login to manage your infrastructure</p>
                 </div>

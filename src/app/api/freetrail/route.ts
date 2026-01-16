@@ -67,7 +67,7 @@ The AXTCloud Team
             
             <p>Our team is now provisioning your high-performance VPS instance. You will receive a separate email within the next 12-24 hours with your login credentials and full details on how to access your server.</p>
             
-            <p style="margin-top: 30px;">If you have any questions, please reply to this email or contact us at <a href="mailto:sales@mail.axt.co.in" style="color: #ff0000;">sales@mail.axt.co.in</a>.</p>
+            <p style="margin-top: 30px;">If you have any questions, please reply to this email or contact us at <a href="mailto:sales@goaxt.cloud" style="color: #ff0000;">sales@goaxt.cloud</a>.</p>
             <p>Happy Hosting!</p>
             <p style="margin-top: 10px; font-size: 0.9em; color: #888;">The AXTCloud Team</p>
         </div>

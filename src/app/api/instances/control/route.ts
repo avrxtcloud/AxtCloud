@@ -2,13 +2,15 @@ import { NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase-server';
 import { EC2Client, StartInstancesCommand, StopInstancesCommand, TerminateInstancesCommand } from "@aws-sdk/client-ec2";
 
+export const dynamic = 'force-dynamic';
+
 export async function POST(req: Request) {
     try {
         const ec2Client = new EC2Client({
-            region: process.env.AXT_AWS_REGION,
+            region: process.env.AXT_AWS_REGION || 'ap-south-1',
             credentials: {
-                accessKeyId: process.env.AXT_AWS_ACCESS_KEY_ID!,
-                secretAccessKey: process.env.AXT_AWS_SECRET_ACCESS_KEY!,
+                accessKeyId: process.env.AXT_AWS_ACCESS_KEY_ID || '',
+                secretAccessKey: process.env.AXT_AWS_SECRET_ACCESS_KEY || '',
             }
         });
 

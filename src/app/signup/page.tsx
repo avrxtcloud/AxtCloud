@@ -95,7 +95,7 @@ export default function SignupPage() {
         <div className="auth-container">
             <div className="auth-card reveal active">
                 <div className="auth-header">
-                    <img src="https://cdn.axt.co.in/logo.jpg" alt="AXT Logo" />
+                    <img src="https://cdn.goaxt.cloud/logo.jpg" alt="AXT Logo" />
                     <h1>Create <span>Account</span></h1>
                     <p>Start your cloud journey with AXTCloud</p>
                 </div>

@@ -21,7 +21,7 @@ const PLANS = [
         ram: '1GB DDR4',
         basePrice: 600,
         type: 't3.micro',
-        features: ['Up to 5GBps Network', 'EBS Optimized', 'Free Tier Eligible']
+        features: ['Up to 5GBps Network', 'Cloud Optimized', 'Enterprise Ready']
     },
     {
         id: 'cloud',
@@ -30,7 +30,7 @@ const PLANS = [
         ram: '16GB DDR4',
         basePrice: 4800,
         type: 't3.xlarge',
-        features: ['10GBps Network', 'EBS Optimized', 'Elastic IP Included', 'High I/O']
+        features: ['10GBps Network', 'Cloud Optimized', 'Static IP Included', 'High I/O']
     },
 ];
 
@@ -44,7 +44,7 @@ export default function DeployPage() {
     const [selectedPlan, setSelectedPlan] = useState(PLANS[0]);
     const [storageSize, setStorageSize] = useState(20);
     const [backupsEnabled, setBackupsEnabled] = useState(false);
-    const [instanceName, setInstanceName] = useState('My-AWS-Instance');
+    const [instanceName, setInstanceName] = useState('Production-Server-01');
     const [loading, setLoading] = useState(false);
     const [user, setUser] = useState<any>(null);
     const router = useRouter();
@@ -95,7 +95,7 @@ export default function DeployPage() {
             });
 
             if (verifyRes.ok) {
-                router.push('/dashboard?success=true');
+                router.push('/panel?success=true');
             } else {
                 const errData = await verifyRes.json();
                 alert(`Deployment failed: ${errData.error || 'Server Error'}`);
@@ -115,20 +115,20 @@ export default function DeployPage() {
             <Script src="https://checkout.razorpay.com/v1/checkout.js" />
 
             <div className="deploy-header reveal active">
-                <h1>Deploy AWS <span>EC2 Instance</span></h1>
-                <p>Configure your cloud infrastructure with enterprise-grade AWS EC2.</p>
+                <h1>Deploy Cloud <span>Instance</span></h1>
+                <p>Configure your high-performance cloud infrastructure with AXTCloud Enterprise.</p>
             </div>
 
             <div className="deploy-grid">
                 <div className="config-side">
                     <section className="config-section reveal active">
-                        <h2><i className="fa-solid fa-server"></i> 1. Instance Name</h2>
+                        <h2><i className="fa-solid fa-server"></i> 1. Server Label</h2>
                         <input
                             type="text"
                             className="text-input"
                             value={instanceName}
                             onChange={(e) => setInstanceName(e.target.value)}
-                            placeholder="e.g. My-Web-Server"
+                            placeholder="e.g. Production-Web-01"
                         />
                     </section>
 

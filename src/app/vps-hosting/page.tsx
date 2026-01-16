@@ -18,10 +18,10 @@ export default function VPSHosting() {
 
             <div className="hero reveal" style={{ padding: '140px 20px 60px', textAlign: 'center', background: 'radial-gradient(circle at top, #1a0000 0%, var(--dark-bg) 70%)', borderBottom: '1px solid var(--border-color)' }}>
                 <h2 style={{ fontSize: '0.9rem', color: 'var(--primary-red)', textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '15px' }}>Next-Gen Cloud</h2>
-                <h1 style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', fontWeight: 700, marginBottom: '15px' }}>High Performance.<br /><span style={{ color: 'var(--primary-red)' }}>AWS Powered.</span></h1>
-                <p style={{ color: 'var(--text-muted)', maxWidth: '750px', margin: '0 auto', fontSize: '1.1rem' }}>We are migrating our VPS infrastructure to AWS EC2 for 99.99% reliability and global scalability. Standard VPS plans are currently being upgraded.</p>
+                <h1 style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', fontWeight: 700, marginBottom: '15px' }}>High Performance.<br /><span style={{ color: 'var(--primary-red)' }}>Enterprise Cloud.</span></h1>
+                <p style={{ color: 'var(--text-muted)', maxWidth: '750px', margin: '0 auto', fontSize: '1.1rem' }}>Our next-generation cloud infrastructure delivers 99.99% reliability and global scalability using enterprise-grade hardware virtualization.</p>
                 <div style={{ marginTop: '40px' }}>
-                    <Link href="/deploy" className="cta-btn" style={{ padding: '15px 35px' }}>Deploy AWS Now</Link>
+                    <Link href="/deploy" className="cta-btn" style={{ padding: '15px 35px' }}>Deploy Cloud Now</Link>
                 </div>
             </div>
 
@@ -40,7 +40,7 @@ export default function VPSHosting() {
                             <div style={{ color: 'var(--primary-red)', fontWeight: 700 }}>UPGRADING</div>
                         </div>
                         <div style={{ padding: '20px', background: '#0a0a0a', borderRadius: '12px', border: '1px solid #222' }}>
-                            <div style={{ fontSize: '0.8rem', color: '#666', marginBottom: '5px' }}>AWS-GLOBAL</div>
+                            <div style={{ fontSize: '0.8rem', color: '#666', marginBottom: '5px' }}>CLOUD-GLOBAL</div>
                             <div style={{ color: '#42b836', fontWeight: 700 }}>OPERATIONAL</div>
                         </div>
                     </div>
@@ -51,10 +51,10 @@ export default function VPSHosting() {
                 <h2 style={{ fontSize: 'clamp(2rem, 5vw, 2.5rem)', marginBottom: '15px' }}>Enterprise-Grade <span style={{ color: 'var(--primary-red)' }}>Infrastructure</span></h2>
                 <div className="feat-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '30px', marginTop: '40px', maxWidth: '1200px', margin: '40px auto 0' }}>
                     {[
-                        { icon: "fa-microchip", title: "AWS Compute", desc: "Powered by latest AWS Nitro System for near-metal performance." },
-                        { icon: "fa-hard-drive", title: "EBS SSD Storage", desc: "Elastic Block Store with high IOPS and multi-zone durability." },
-                        { icon: "fa-shield-cat", title: "AWS Shield", desc: "Always-on network flow monitoring and inline mitigation." },
-                        { icon: "fa-network-wired", title: "Elastic IP", desc: "Static IP addresses designed for dynamic cloud computing." },
+                        { icon: "fa-microchip", title: "Enterprise Compute", desc: "Powered by latest virtualization technology for near-metal performance." },
+                        { icon: "fa-hard-drive", title: "Ultra Storage", desc: "Enterprise Block Store with high IOPS and multi-zone durability." },
+                        { icon: "fa-shield-cat", title: "Advanced Shield", desc: "Always-on network flow monitoring and inline mitigation." },
+                        { icon: "fa-network-wired", title: "Static IP", desc: "Static IP addresses designed for dynamic cloud computing." },
                     ].map((feat, i) => (
                         <div key={i} className="feat-item" style={{ background: '#0a0a0a', padding: '30px', borderRadius: '16px', border: '1px solid #222' }}>
                             <i className={`fa-solid ${feat.icon}`} style={{ fontSize: '2rem', color: 'var(--primary-red)', marginBottom: '15px' }}></i>

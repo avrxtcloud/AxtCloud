@@ -9,13 +9,13 @@ export const metadata: Metadata = {
   title: "AXTCloud | Premium Cloud Hosting Partner",
   description: "AXTCloud - Premium VPS, Dedicated Servers, and Enterprise Cloud Hosting with advanced DDoS protection and white-glove support.",
   icons: {
-    icon: "https://cdn.axt.co.in/logo.jpg",
-    shortcut: "https://cdn.axt.co.in/logo.jpg",
+    icon: "https://cdn.goaxt.cloud/logo.jpg",
+    shortcut: "https://cdn.goaxt.cloud/logo.jpg",
   },
   openGraph: {
     type: "website",
     title: "AXTCloud - Premium Hosting",
-    images: ["https://cdn.axt.co.in/logo.jpg"],
+    images: ["https://cdn.goaxt.cloud/logo.jpg"],
   }
 };
 

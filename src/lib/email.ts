@@ -24,12 +24,12 @@ export async function sendWelcomeEmail(email: string, name: string) {
                     <p>We're thrilled to have you on board. Your infrastructure journey begins here.</p>
                     <p>With AXTCloud, you can:</p>
                     <ul>
-                        <li>Deploy high-performance AWS instances in seconds.</li>
+                        <li>Deploy high-performance cloud instances in seconds.</li>
                         <li>Manage your servers with a sleek, intuitive dashboard.</li>
                         <li>Enjoy enterprise-grade security and support.</li>
                     </ul>
                     <p>Get started by deploying your first server today!</p>
-                    <a href="https://axt.co.in/deploy" style="display: inline-block; padding: 12px 24px; background-color: #ff0000; color: #fff; text-decoration: none; border-radius: 5px; font-weight: bold;">Deploy Now</a>
+                    <a href="https://goaxt.cloud/deploy" style="display: inline-block; padding: 12px 24px; background-color: #ff0000; color: #fff; text-decoration: none; border-radius: 5px; font-weight: bold;">Deploy Now</a>
                     <p style="margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px; color: #888; font-size: 12px;">
                         &copy; ${new Date().getFullYear()} AXTCloud. All rights reserved.
                     </p>
@@ -53,15 +53,15 @@ export async function sendProvisioningEmail(email: string, instanceName: string,
             html: `
                 <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
                     <h1 style="color: #42b836;">Provisioning Complete!</h1>
-                    <p>Your new server <strong>${instanceName}</strong> has been successfully deployed on AWS.</p>
+                    <p>Your new server <strong>${instanceName}</strong> has been successfully deployed.</p>
                     <div style="background: #f9f9f9; padding: 15px; border-radius: 8px; margin: 20px 0;">
                         <h3 style="margin-top: 0;">Server Specs:</h3>
                         <p><strong>OS:</strong> ${specs.os}</p>
                         <p><strong>Plan:</strong> ${specs.plan}</p>
                         <p><strong>Specs:</strong> ${specs.cpu} CPU / ${specs.ram} RAM / ${specs.disk} Storage</p>
                     </div>
-                    <p>You can manage your server from your dashboard:</p>
-                    <a href="https://axt.co.in/dashboard" style="display: inline-block; padding: 12px 24px; background-color: #000; color: #fff; text-decoration: none; border-radius: 5px; font-weight: bold;">View Dashboard</a>
+                    <p>You can manage your server from your control panel:</p>
+                    <a href="https://goaxt.cloud/panel" style="display: inline-block; padding: 12px 24px; background-color: #000; color: #fff; text-decoration: none; border-radius: 5px; font-weight: bold;">View Panel</a>
                 </div>
             `
         });

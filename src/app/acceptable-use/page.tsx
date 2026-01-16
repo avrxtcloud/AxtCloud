@@ -77,7 +77,7 @@ export default function AUP() {
                     <div className="contact-box" style={{ background: 'linear-gradient(to right, #111, #1a0505)', padding: '30px', borderRadius: '12px', border: '1px solid #333', textAlign: 'center', marginTop: '20px' }}>
                         <i className="fa-solid fa-triangle-exclamation" style={{ color: 'var(--primary-red)', fontSize: '1.5rem', marginBottom: '10px' }}></i>
                         <p style={{ marginBottom: '5px', color: '#fff' }}>Report Abuse</p>
-                        <a href="mailto:legal@mail.axt.co.in" style={{ color: 'var(--primary-red)', fontWeight: 600, fontSize: '1.1rem' }}>legal@mail.axt.co.in</a>
+                        <a href="mailto:legal@mail.goaxt.cloud" style={{ color: 'var(--primary-red)', fontWeight: 600, fontSize: '1.1rem' }}>legal@mail.goaxt.cloud</a>
                     </div>
                 </div>
             </div>
