@@ -55,6 +55,12 @@ export async function POST(req: Request) {
             await supabase.from('user_instances').update({ status: action === 'start' ? 'running' : 'stopped' }).eq('instance_id', instanceId);
         }
 
+        // Send notification email
+        if (user.email) {
+            const { sendActionEmail } = await import('@/lib/email');
+            await sendActionEmail(user.email, instance.name, action);
+        }
+
         return NextResponse.json({ success: true, action });
     } catch (error) {
         console.error('Action Error:', error);

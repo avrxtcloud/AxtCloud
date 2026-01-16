@@ -73,7 +73,19 @@ export async function POST(req: Request) {
             // Even if DB fails, instance is created. Should ideally have a rollback or retry mechanism.
         }
 
-        // 5. Success!
+        // 5. Send Notification Email
+        if (user.email) {
+            const { sendProvisioningEmail } = await import('@/lib/email');
+            await sendProvisioningEmail(user.email, config.name, {
+                os: config.os,
+                plan: config.plan,
+                cpu: config.cpu,
+                ram: config.ram,
+                disk: config.disk
+            });
+        }
+
+        // 6. Success!
         return NextResponse.json({ message: "Verification successful", instanceId: instance.InstanceId });
     } catch (error) {
         console.error('Verification Error:', error);

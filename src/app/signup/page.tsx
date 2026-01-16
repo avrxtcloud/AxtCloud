@@ -44,6 +44,17 @@ export default function SignupPage() {
                 setError(signupError.message);
                 setLoading(false);
             } else {
+                // Send Welcome Email via API
+                try {
+                    await fetch('/api/auth/welcome', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ email, name }),
+                    });
+                } catch (emailErr) {
+                    console.error('Failed to trigger welcome email:', emailErr);
+                }
+
                 setSuccess(true);
                 setLoading(false);
             }
