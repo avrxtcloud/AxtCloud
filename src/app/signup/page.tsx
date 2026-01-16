@@ -48,9 +48,9 @@ export default function SignupPage() {
                 setLoading(false);
             }
         } catch (err: any) {
-            console.error('Signup Error:', err);
+            console.error('CRITICAL SIGNUP ERROR:', err);
             if (err.message === 'Failed to fetch') {
-                setError("Network Error: Could not reach Supabase. This usually happens if your URL is missing 'https://' or if an Ad-Blocker is active.");
+                setError("Network Error: 'Failed to fetch'. Most common causes: 1. Your Supabase URL in Vercel is missing 'https://'. 2. An Ad-Blocker is blocking the request. 3. Your ISP is blocking supabase.co. Check Browser Console (F12) for details.");
             } else {
                 setError(err.message || "An unexpected network error occurred.");
             }
