@@ -13,7 +13,7 @@ const ec2Client = new EC2Client({
 export async function POST(req: Request) {
     try {
         const { instanceId, action } = await req.json();
-        const supabase = createClient();
+        const supabase = await createClient();
 
         // Check authentication
         const { data: { user } } = await supabase.auth.getUser();

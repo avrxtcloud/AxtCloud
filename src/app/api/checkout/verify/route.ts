@@ -14,7 +14,7 @@ const ec2Client = new EC2Client({
 export async function POST(req: Request) {
     try {
         const { razorpay_order_id, razorpay_payment_id, razorpay_signature, config } = await req.json();
-        const supabase = createClient();
+        const supabase = await createClient();
 
         // 1. Verify Signature
         const sign = razorpay_order_id + "|" + razorpay_payment_id;
