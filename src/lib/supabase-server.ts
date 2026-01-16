@@ -11,8 +11,8 @@ export const createClient = async () => {
     const cookieStore = await cookies();
 
     return createServerClient(
-        url || 'https://placeholder.supabase.co',
-        key || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBsYWNlaG9sZGVyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njg1NDMwOTEsImV4cCI6MjA4NDExOTA5MX0.placeholder',
+        url || 'https://wlfijditizclqsjpxpql.supabase.co',
+        key || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.dummy',
         {
             cookies: {
                 get(name: string) {
