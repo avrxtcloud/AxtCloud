@@ -29,21 +29,31 @@ export default function SignupPage() {
             return;
         }
 
-        const { error: signupError } = await supabase.auth.signUp({
-            email,
-            password,
-            options: {
-                data: {
-                    full_name: name,
+        try {
+            const { error: signupError } = await supabase.auth.signUp({
+                email,
+                password,
+                options: {
+                    data: {
+                        full_name: name,
+                    },
                 },
-            },
-        });
+            });
 
-        if (signupError) {
-            setError(signupError.message);
-            setLoading(false);
-        } else {
-            setSuccess(true);
+            if (signupError) {
+                setError(signupError.message);
+                setLoading(false);
+            } else {
+                setSuccess(true);
+                setLoading(false);
+            }
+        } catch (err: any) {
+            console.error('Signup Error:', err);
+            if (err.message === 'Failed to fetch') {
+                setError("Network Error: Could not reach Supabase. This usually happens if your URL is missing 'https://' or if an Ad-Blocker is active.");
+            } else {
+                setError(err.message || "An unexpected network error occurred.");
+            }
             setLoading(false);
         }
     };
