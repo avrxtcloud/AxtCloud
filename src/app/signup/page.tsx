@@ -19,7 +19,17 @@ export default function SignupPage() {
         setLoading(true);
         setError(null);
 
-        const { error } = await supabase.auth.signUp({
+        // Check if configuration is missing (placeholder detection)
+        const isPlaceholder = !process.env.NEXT_PUBLIC_SUPABASE_URL ||
+            process.env.NEXT_PUBLIC_SUPABASE_URL.includes('placeholder');
+
+        if (isPlaceholder) {
+            setError("Configuration Error: Supabase URL/Key not found in Environment Variables.");
+            setLoading(false);
+            return;
+        }
+
+        const { error: signupError } = await supabase.auth.signUp({
             email,
             password,
             options: {
@@ -29,8 +39,8 @@ export default function SignupPage() {
             },
         });
 
-        if (error) {
-            setError(error.message);
+        if (signupError) {
+            setError(signupError.message);
             setLoading(false);
         } else {
             setSuccess(true);

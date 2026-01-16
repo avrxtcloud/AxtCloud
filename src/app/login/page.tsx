@@ -18,13 +18,23 @@ export default function LoginPage() {
         setLoading(true);
         setError(null);
 
-        const { error } = await supabase.auth.signInWithPassword({
+        // Check for placeholder configuration
+        const isPlaceholder = !process.env.NEXT_PUBLIC_SUPABASE_URL ||
+            process.env.NEXT_PUBLIC_SUPABASE_URL.includes('placeholder');
+
+        if (isPlaceholder) {
+            setError("Configuration Error: Supabase URL/Key not found in Vercel.");
+            setLoading(false);
+            return;
+        }
+
+        const { error: loginError } = await supabase.auth.signInWithPassword({
             email,
             password,
         });
 
-        if (error) {
-            setError(error.message);
+        if (loginError) {
+            setError(loginError.message);
             setLoading(false);
         } else {
             router.push('/dashboard');
