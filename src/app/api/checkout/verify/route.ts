@@ -16,15 +16,17 @@ export async function POST(req: Request) {
         const { razorpay_order_id, razorpay_payment_id, razorpay_signature, config } = await req.json();
         const supabase = await createClient();
 
-        // 1. Verify Signature
-        const sign = razorpay_order_id + "|" + razorpay_payment_id;
-        const expectedSign = crypto
-            .createHmac("sha256", process.env.RAZORPAY_KEY_SECRET!)
-            .update(sign.toString())
-            .digest("hex");
+        // 1. Verify Signature (Skip if TEST_MODE)
+        if (razorpay_payment_id !== 'TEST_MODE') {
+            const sign = razorpay_order_id + "|" + razorpay_payment_id;
+            const expectedSign = crypto
+                .createHmac("sha256", process.env.RAZORPAY_KEY_SECRET!)
+                .update(sign.toString())
+                .digest("hex");
 
-        if (razorpay_signature !== expectedSign) {
-            return NextResponse.json({ error: "Invalid signature" }, { status: 400 });
+            if (razorpay_signature !== expectedSign) {
+                return NextResponse.json({ error: "Invalid signature" }, { status: 400 });
+            }
         }
 
         // 2. Get Authenticated User

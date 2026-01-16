@@ -72,57 +72,37 @@ export default function DeployPage() {
         setLoading(true);
 
         try {
-            const res = await fetch('/api/checkout/razorpay', {
+            // TEST MODE: Bypassing Razorpay for direct AWS provisioning
+            const verifyRes = await fetch('/api/checkout/verify', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ amount: totalPrice }),
-            });
-            const orderData = await res.json();
-
-            const options = {
-                key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
-                amount: orderData.amount,
-                currency: "INR",
-                name: "AXTCloud AWS",
-                description: `AWS Deployment - ${selectedPlan.name}`,
-                order_id: orderData.id,
-                handler: async function (response: any) {
-                    const verifyRes = await fetch('/api/checkout/verify', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            razorpay_order_id: response.razorpay_order_id,
-                            razorpay_payment_id: response.razorpay_payment_id,
-                            razorpay_signature: response.razorpay_signature,
-                            config: {
-                                name: instanceName,
-                                os: selectedOS.id,
-                                ami: selectedOS.ami,
-                                plan: selectedPlan.id,
-                                cpu: selectedPlan.cpu,
-                                ram: selectedPlan.ram,
-                                disk: `${storageSize}GB`,
-                                type: selectedPlan.type,
-                                backups: backupsEnabled
-                            }
-                        }),
-                    });
-
-                    if (verifyRes.ok) {
-                        router.push('/dashboard?success=true');
-                    } else {
-                        alert('Payment verification failed.');
+                body: JSON.stringify({
+                    razorpay_order_id: 'TEST_ORDER_ID',
+                    razorpay_payment_id: 'TEST_MODE',
+                    razorpay_signature: 'TEST_SIGNATURE',
+                    config: {
+                        name: instanceName,
+                        os: selectedOS.id,
+                        ami: selectedOS.ami,
+                        plan: selectedPlan.id,
+                        cpu: selectedPlan.cpu,
+                        ram: selectedPlan.ram,
+                        disk: `${storageSize}GB`,
+                        type: selectedPlan.type,
+                        backups: backupsEnabled
                     }
-                },
-                prefill: { email: user.email },
-                theme: { color: "#ff0000" }
-            };
+                }),
+            });
 
-            const rzp = new (window as any).Razorpay(options);
-            rzp.open();
+            if (verifyRes.ok) {
+                router.push('/dashboard?success=true');
+            } else {
+                const errData = await verifyRes.json();
+                alert(`Deployment failed: ${errData.error || 'Server Error'}`);
+            }
         } catch (err) {
             console.error(err);
-            alert('Something went wrong.');
+            alert('Something went wrong during deployment.');
         } finally {
             setLoading(false);
         }
