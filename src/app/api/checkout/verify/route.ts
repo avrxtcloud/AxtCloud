@@ -3,6 +3,16 @@ import crypto from 'crypto';
 import { createClient } from '@/lib/supabase-server';
 import { EC2Client, RunInstancesCommand } from "@aws-sdk/client-ec2";
 
+function generatePassword(length = 12) {
+    const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
+    let retVal = "";
+    for (let i = 0, n = charset.length; i < length; ++i) {
+        retVal += charset.charAt(Math.floor(Math.random() * n));
+    }
+    // Ensure it meets Windows complexity (at least one upper, one lower, one digit, one special)
+    return retVal + "Aa1!";
+}
+
 export async function POST(req: Request) {
     try {
         const body = await req.json();
@@ -22,7 +32,6 @@ export async function POST(req: Request) {
 
         // 1. Verify Signature (Skip if TEST_MODE)
         if (razorpay_payment_id !== 'TEST_MODE') {
-            console.log('Verifying signature...');
             const sign = razorpay_order_id + "|" + razorpay_payment_id;
             const expectedSign = crypto
                 .createHmac("sha256", process.env.RAZORPAY_KEY_SECRET!)
@@ -30,26 +39,53 @@ export async function POST(req: Request) {
                 .digest("hex");
 
             if (razorpay_signature !== expectedSign) {
-                console.error('Invalid signature');
                 return NextResponse.json({ error: "Invalid signature" }, { status: 400 });
             }
         }
 
         // 2. Get Authenticated User
-        console.log('Fetching user...');
         const { data: { user }, error: authError } = await supabase.auth.getUser();
         if (authError || !user) {
-            console.error('Auth Error:', authError);
             return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
         }
 
-        // 3. Provision AWS EC2 Instance
-        console.log('Provisioning EC2...', { ami: config.ami, type: config.type || "t3.medium" });
+        // 3. Generate Credentials
+        const password = generatePassword();
+        let username = "ubuntu";
+        let userData = "";
+
+        if (config.os.toLowerCase().includes('windows')) {
+            username = "Administrator";
+            userData = Buffer.from(`<powershell>
+$Password = "${password}"
+$User = [adsi]"WinNT://localhost/Administrator,user"
+$User.SetPassword($Password)
+</powershell>`).toString('base64');
+        } else if (config.os.toLowerCase().includes('debian')) {
+            username = "admin";
+            userData = Buffer.from(`#!/bin/bash
+echo "admin:${password}" | chpasswd
+sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config
+sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
+systemctl restart ssh
+`).toString('base64');
+        } else {
+            username = "ubuntu";
+            userData = Buffer.from(`#!/bin/bash
+echo "ubuntu:${password}" | chpasswd
+sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config
+sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
+systemctl restart ssh
+`).toString('base64');
+        }
+
+        // 4. Provision AWS EC2 Instance
         const runCommand = new RunInstancesCommand({
             ImageId: config.ami,
-            InstanceType: (config.type || "t3.medium") as any,
+            InstanceType: (config.type || "t3.micro") as any,
             MinCount: 1,
             MaxCount: 1,
+            UserData: userData,
             TagSpecifications: [
                 {
                     ResourceType: "instance",
@@ -72,8 +108,7 @@ export async function POST(req: Request) {
             throw new Error("Failed to provision instance - no instance returned");
         }
 
-        // 4. Save to Supabase
-        console.log('Saving to Database...');
+        // 5. Save to Supabase
         const { error: dbError } = await supabase
             .from('user_instances')
             .insert({
@@ -84,31 +119,32 @@ export async function POST(req: Request) {
                 plan: config.plan,
                 specs: { cpu: config.cpu, ram: config.ram, disk: config.disk },
                 status: 'provisioning',
-                payment_id: razorpay_payment_id
+                payment_id: razorpay_payment_id,
+                username: username,
+                password: password
             });
 
-        if (dbError) {
-            console.error('Database INSERT Error:', dbError);
-        }
+        if (dbError) console.error('DB Error:', dbError);
 
-        // 5. Send Notification Email
+        // 6. Send Notification Email
         if (user.email) {
             try {
-                console.log('Sending email to:', user.email);
                 const { sendProvisioningEmail } = await import('@/lib/email');
                 await sendProvisioningEmail(user.email, config.name, {
                     os: config.os,
                     plan: config.plan,
                     cpu: config.cpu,
                     ram: config.ram,
-                    disk: config.disk
+                    disk: config.disk,
+                    username,
+                    password,
+                    ip: 'Fetching (Check Panel shortly)'
                 });
             } catch (emailErr) {
-                console.error('Email Notification Error:', emailErr);
+                console.error('Email Error:', emailErr);
             }
         }
 
-        // 6. Success!
         return NextResponse.json({ message: "Provisioning started successfully", instanceId: instance.InstanceId });
     } catch (error: any) {
         console.error('GLOBAL VERIFY ERROR:', error);

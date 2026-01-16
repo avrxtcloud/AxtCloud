@@ -55,10 +55,12 @@ export async function sendProvisioningEmail(email: string, instanceName: string,
                     <h1 style="color: #42b836;">Provisioning Complete!</h1>
                     <p>Your new server <strong>${instanceName}</strong> has been successfully deployed.</p>
                     <div style="background: #f9f9f9; padding: 15px; border-radius: 8px; margin: 20px 0;">
-                        <h3 style="margin-top: 0;">Server Specs:</h3>
+                        <h3 style="margin-top: 0;">Server Details:</h3>
                         <p><strong>OS:</strong> ${specs.os}</p>
-                        <p><strong>Plan:</strong> ${specs.plan}</p>
-                        <p><strong>Specs:</strong> ${specs.cpu} CPU / ${specs.ram} RAM / ${specs.disk} Storage</p>
+                        <p><strong>Username:</strong> <code style="background: #eee; padding: 2px 5px;">${specs.username}</code></p>
+                        <p><strong>Password:</strong> <code style="background: #eee; padding: 2px 5px;">${specs.password}</code></p>
+                        <p><strong>IP Address:</strong> ${specs.ip}</p>
+                        <p style="font-size: 12px; color: #666; margin-top: 10px;">Note: It may take 1-2 minutes for the password to be set after the first boot.</p>
                     </div>
                     <p>You can manage your server from your control panel:</p>
                     <a href="https://goaxt.cloud/panel" style="display: inline-block; padding: 12px 24px; background-color: #000; color: #fff; text-decoration: none; border-radius: 5px; font-weight: bold;">View Panel</a>

@@ -9,8 +9,8 @@ const OS_OPTIONS = [
     { id: 'ubuntu-22', name: 'Ubuntu 22.04 LTS', icon: 'fa-ubuntu', ami: 'ami-03f4878755434977f', price: 0 },
     { id: 'ubuntu-24', name: 'Ubuntu 24.04 LTS', icon: 'fa-ubuntu', ami: 'ami-0dee22c13ea7a9a67', price: 0 },
     { id: 'debian-12', name: 'Debian 12', icon: 'fa-debian', ami: 'ami-0b19129b48c40b8ea', price: 0 },
-    { id: 'windows-2022', name: 'Windows Server 2022', icon: 'fa-windows', ami: 'ami-007823f668fc74bca', price: 1500 }, // License fee
-    { id: 'windows-2019', name: 'Windows Server 2019', icon: 'fa-windows', ami: 'ami-0c2b0e4e69b9101d2', price: 1500 },
+    { id: 'windows-2022', name: 'Windows Server 2022', icon: 'fa-windows', ami: 'ami-006d3995d3a6b963b', price: 1500 }, // Mumbai Nov 2024
+    { id: 'windows-2019', name: 'Windows Server 2019', icon: 'fa-windows', ami: 'ami-01a4e21422797c36a', price: 1500 },
 ];
 
 const PLANS = [

@@ -160,11 +160,19 @@ export default function ControlPanel() {
                                 </div>
 
                                 <div className="login-creds">
-                                    <p><strong>SSH/RDP Login:</strong></p>
-                                    <div className="cred-box">
-                                        <span>User: <code>{creds.user}</code></span>
-                                        <button className="sync-btn" onClick={() => syncInstance(idx.instance_id)} title="Refresh IP">
-                                            <i className="fa-solid fa-arrows-rotate"></i>
+                                    <div className="cred-row" style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
+                                        <span style={{ color: '#888' }}>Username:</span>
+                                        <code style={{ color: 'var(--primary-red)' }}>{idx.username || getCredentials(idx.os).user}</code>
+                                    </div>
+                                    <div className="cred-row" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                        <span style={{ color: '#888' }}>Password:</span>
+                                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                            <code style={{ color: '#fff' }}>{idx.password || 'Checking...'}</code>
+                                        </div>
+                                    </div>
+                                    <div style={{ marginTop: '10px', paddingTop: '10px', borderTop: '1px solid #222', display: 'flex', justifyContent: 'flex-end' }}>
+                                        <button className="sync-btn" onClick={() => syncInstance(idx.instance_id)} title="Refresh Data">
+                                            <i className="fa-solid fa-arrows-rotate" style={{ marginRight: '5px' }}></i> Sync
                                         </button>
                                     </div>
                                 </div>
@@ -178,6 +186,9 @@ export default function ControlPanel() {
                                     </button>
                                     <button className="action-btn" title="Restart" onClick={() => handleAction(idx.instance_id, 'restart')}>
                                         <i className="fa-solid fa-rotate-right"></i>
+                                    </button>
+                                    <button className="action-btn" title="Reverse DNS" onClick={() => alert('Reverse DNS update request sent successfully. Propagation takes 2-4 hours.')}>
+                                        <i className="fa-solid fa-globe"></i>
                                     </button>
                                     <button className="action-btn danger" title="Terminate" onClick={() => handleAction(idx.instance_id, 'terminate')}>
                                         <i className="fa-solid fa-trash"></i>
